@@ -158,13 +158,13 @@ if(isset($_POST['order'])){
 
    <section class="flex">
 
-      <a href="#home" class="logo"><span>P</span>izza.</a>
+      <a href="#home" class="logo"><span>D</span>saraya.</a>
 
       <nav class="navbar">
-         <a href="#home">home</a>
+         <a href="index.php">home</a>
          <a href="#about">about</a>
-         <a href="#menu">menu</a>
-         <a href="#order">order</a>
+         <a href="menu.php">menu</a>
+         <a href="order.php">order</a>
          <a href="#faq">faq</a>
       </nav>
 
@@ -330,7 +330,7 @@ if(isset($_POST['order'])){
 
          <div class="slide active">
             <div class="image">
-               <img src="images/home-img-1.png" alt="">
+               <img src="images/home-img-1.png" style="width: 400px; height: 400px; margin-left: 100px; margin-top: 50px;" alt="">
             </div>
             <div class="content">
                <h3>homemade Pepperoni Pizza</h3>
@@ -401,121 +401,6 @@ if(isset($_POST['order'])){
 </section>
 
 <!-- about section ends -->
-
-<!-- menu section starts  -->
-
-<section id="menu" class="menu">
-
-   <h1 class="heading">our menu</h1>
-
-   <div class="box-container">
-
-      <?php
-         $select_products = $conn->prepare("SELECT * FROM `products`");
-         $select_products->execute();
-         if($select_products->rowCount() > 0){
-            while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){    
-      ?>
-      <div class="box">
-         <div class="price">$<?= $fetch_products['price'] ?>/-</div>
-         <img src="uploaded_img/<?= $fetch_products['image'] ?>" alt="">
-         <div class="name"><?= $fetch_products['name'] ?></div>
-         <form action="" method="post">
-            <input type="hidden" name="pid" value="<?= $fetch_products['id'] ?>">
-            <input type="hidden" name="name" value="<?= $fetch_products['name'] ?>">
-            <input type="hidden" name="price" value="<?= $fetch_products['price'] ?>">
-            <input type="hidden" name="image" value="<?= $fetch_products['image'] ?>">
-            <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
-            <input type="submit" class="btn" name="add_to_cart" value="add to cart">
-         </form>
-      </div>
-      <?php
-         }
-      }else{
-         echo '<p class="empty">no products added yet!</p>';
-      }
-      ?>
-
-   </div>
-
-</section>
-
-<!-- menu section ends -->
-
-<!-- order section starts  -->
-
-<section class="order" id="order">
-
-   <h1 class="heading">order now</h1>
-
-   <form action="" method="post">
-
-   <div class="display-orders">
-
-   <?php
-         $grand_total = 0;
-         $cart_item[] = '';
-         $select_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
-         $select_cart->execute([$user_id]);
-         if($select_cart->rowCount() > 0){
-            while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
-              $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']);
-              $grand_total += $sub_total; 
-              $cart_item[] = $fetch_cart['name'].' ( '.$fetch_cart['price'].' x '.$fetch_cart['quantity'].' ) - ';
-              $total_products = implode($cart_item);
-              echo '<p>'.$fetch_cart['name'].' <span>('.$fetch_cart['price'].' x '.$fetch_cart['quantity'].')</span></p>';
-            }
-         }else{
-            echo '<p class="empty"><span>your cart is empty!</span></p>';
-         }
-      ?>
-
-   </div>
-
-      <div class="grand-total"> grand total : <span>$<?= $grand_total; ?>/-</span></div>
-
-      <input type="hidden" name="total_products" value="<?= $total_products; ?>">
-      <input type="hidden" name="total_price" value="<?= $grand_total; ?>">
-
-      <div class="flex">
-         <div class="inputBox">
-            <span>your name :</span>
-            <input type="text" name="name" class="box" required placeholder="enter your name" maxlength="20">
-         </div>
-         <div class="inputBox">
-            <span>your number :</span>
-            <input type="number" name="number" class="box" required placeholder="enter your number" min="0" max="9999999999" onkeypress="if(this.value.length == 10) return false;">
-         </div>
-         <div class="inputBox">
-            <span>payment method</span>
-            <select name="method" class="box">
-               <option value="cash on delivery">cash on delivery</option>
-               <option value="credit card">credit card</option>
-               <option value="paytm">paytm</option>
-               <option value="paypal">paypal</option>
-            </select>
-         </div>
-         <div class="inputBox">
-            <span>address line 01 :</span>
-            <input type="text" name="flat" class="box" required placeholder="e.g. flat no." maxlength="50">
-         </div>
-         <div class="inputBox">
-            <span>address line 02 :</span>
-            <input type="text" name="street" class="box" required placeholder="e.g. street name." maxlength="50">
-         </div>
-         <div class="inputBox">
-            <span>pin code :</span>
-            <input type="number" name="pin_code" class="box" required placeholder="e.g. 123456" min="0" max="999999" onkeypress="if(this.value.length == 6) return false;">
-         </div>
-      </div>
-
-      <input type="submit" value="order now" class="btn" name="order">
-
-   </form>
-
-</section>
-
-<!-- order section ends -->
 
 <!-- faq section starts  -->
 
