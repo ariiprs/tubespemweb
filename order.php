@@ -216,7 +216,7 @@ if(isset($_POST['order'])){
                   echo '<p>'.$fetch_cart['name'].' <span>('.$fetch_cart['price'].' x '.$fetch_cart['quantity'].')</span></p>';
                }
             }else{
-               echo '<p><span>your cart is empty!</span></p>';
+               echo '<p><span>keranjang anda kosong!</span></p>';
             }
          ?>
       </div>
@@ -310,11 +310,11 @@ if(isset($_POST['order'])){
       <?php
          }
       }else{
-         echo '<p class="empty"><span>your cart is empty!</span></p>';
+         echo '<p class="empty"><span>keranjang anda kosong!</span></p>';
       }
       ?>
 
-      <div class="cart-total"> grand total : <span>$<?= $grand_total; ?>/-</span></div>
+      <div class="cart-total"> grand total : <span>Rp<?= $grand_total; ?>/-</span></div>
 
       <a href="#order" class="btn">order now</a>
 
@@ -352,7 +352,7 @@ if(isset($_POST['order'])){
 
    </div>
 
-      <div class="grand-total"> grand total : <span>$<?= $grand_total; ?>/-</span></div>
+      <div class="grand-total"> grand total : <span>Rp<?= $grand_total; ?>/-</span></div>
 
       <input type="hidden" name="total_products" value="<?= $total_products; ?>">
       <input type="hidden" name="total_price" value="<?= $grand_total; ?>">
@@ -370,9 +370,7 @@ if(isset($_POST['order'])){
             <span>payment method</span>
             <select name="method" class="box">
                <option value="cash on delivery">cash on delivery</option>
-               <option value="credit card">credit card</option>
-               <option value="paytm">paytm</option>
-               <option value="paypal">paypal</option>
+               <option value="credit card">debit card</option>
             </select>
          </div>
          <div class="inputBox">
@@ -384,7 +382,7 @@ if(isset($_POST['order'])){
             <input type="text" name="street" class="box" required placeholder="e.g. street name." maxlength="50">
          </div>
          <div class="inputBox">
-            <span>pin code :</span>
+            <span>Jumlah Orders :</span>
             <input type="number" name="pin_code" class="box" required placeholder="e.g. 123456" min="0" max="999999" onkeypress="if(this.value.length == 6) return false;">
          </div>
       </div>
@@ -406,14 +404,14 @@ if(isset($_POST['order'])){
       <div class="box">
          <i class="fas fa-phone"></i>
          <h3>phone number</h3>
-         <p>+123-456-7890</p>
-         <p>+111-222-3333</p>
+         <p>+62-456-7890</p>
+         <p>+62-222-3333</p>
       </div>
 
       <div class="box">
          <i class="fas fa-map-marker-alt"></i>
          <h3>our address</h3>
-         <p>mumbai, india - 400104</p>
+         <p>Surabaya, Indonesia - 400104</p>
       </div>
 
       <div class="box">
@@ -425,14 +423,14 @@ if(isset($_POST['order'])){
       <div class="box">
          <i class="fas fa-envelope"></i>
          <h3>email address</h3>
-         <p>shaikhanas@gmail.com</p>
-         <p>anasbhai@gmail.com</p>
+         <p>dsaraya@gmail.com</p>
+         <p>dsaraya@gmail.com</p>
       </div>
 
    </div>
 
    <div class="credit">
-      &copy; copyright @ <?= date('Y'); ?> by <span>mr. web designer</span> | all rights reserved!
+      @ <?= date('Y'); ?> by <span>Dsaraya</span> | all rights reserved!
    </div>
 
 </section>

@@ -314,7 +314,7 @@ if(isset($_POST['order'])){
       }
       ?>
 
-      <div class="cart-total"> grand total : <span>$<?= $grand_total; ?>/-</span></div>
+      <div class="cart-total"> grand total : <span>Rp<?= $grand_total; ?>/-</span></div>
 
       <a href="#order" class="btn">order now</a>
 
@@ -333,7 +333,7 @@ if(isset($_POST['order'])){
                <img src="images/home-img-1.png" style="width: 400px; height: 400px; margin-left: 100px; margin-top: 50px;" alt="">
             </div>
             <div class="content">
-               <h3>homemade Pepperoni Pizza</h3>
+               <h3>homemade Croissant</h3>
                <div class="fas fa-angle-left" onclick="prev()"></div>
                <div class="fas fa-angle-right" onclick="next()"></div>
             </div>
@@ -366,106 +366,7 @@ if(isset($_POST['order'])){
    </section>
 
 </div>
-
-<!-- about section starts  -->
-
-<section class="about" id="about">
-
-   <h1 class="heading">about us</h1>
-
-   <div class="box-container">
-
-      <div class="box">
-         <img src="images/about-1.svg" alt="">
-         <h3>made with love</h3>
-         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum quae amet beatae magni numquam facere sit. Tempora vel laboriosam repudiandae!</p>
-         <a href="#menu" class="btn">our menu</a>
-      </div>
-
-      <div class="box">
-         <img src="images/about-2.svg" alt="">
-         <h3>30 minutes delivery</h3>
-         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum quae amet beatae magni numquam facere sit. Tempora vel laboriosam repudiandae!</p>
-         <a href="#menu" class="btn">our menu</a>
-      </div>
-
-      <div class="box">
-         <img src="images/about-3.svg" alt="">
-         <h3>share with freinds</h3>
-         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum quae amet beatae magni numquam facere sit. Tempora vel laboriosam repudiandae!</p>
-         <a href="#menu" class="btn">our menu</a>
-      </div>
-
-   </div>
-
-</section>
-
-<!-- about section ends -->
-
-<!-- faq section starts  -->
-
-<section class="faq" id="faq">
-
-   <h1 class="heading">FAQ</h1>
-
-   <div class="accordion-container">
-
-      <div class="accordion active">
-         <div class="accordion-heading">
-            <span>how does it work?</span>
-            <i class="fas fa-angle-down"></i>
-         </div>
-         <p class="accrodion-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, quas. Quidem minima veniam accusantium maxime, doloremque iusto deleniti veritatis quos.
-         </p>
-      </div>
-
-      <div class="accordion">
-         <div class="accordion-heading">
-            <span>how long does it take for delivery?</span>
-            <i class="fas fa-angle-down"></i>
-         </div>
-         <p class="accrodion-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, quas. Quidem minima veniam accusantium maxime, doloremque iusto deleniti veritatis quos.
-         </p>
-      </div>
-
-      <div class="accordion">
-         <div class="accordion-heading">
-            <span>can I order for huge parties?</span>
-            <i class="fas fa-angle-down"></i>
-         </div>
-         <p class="accrodion-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, quas. Quidem minima veniam accusantium maxime, doloremque iusto deleniti veritatis quos.
-         </p>
-      </div>
-
-      <div class="accordion">
-         <div class="accordion-heading">
-            <span>how much protein it contains?</span>
-            <i class="fas fa-angle-down"></i>
-         </div>
-         <p class="accrodion-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, quas. Quidem minima veniam accusantium maxime, doloremque iusto deleniti veritatis quos.
-         </p>
-      </div>
-
-
-      <div class="accordion">
-         <div class="accordion-heading">
-            <span>is it cooked with oil?</span>
-            <i class="fas fa-angle-down"></i>
-         </div>
-         <p class="accrodion-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, quas. Quidem minima veniam accusantium maxime, doloremque iusto deleniti veritatis quos.
-         </p>
-      </div>
-
-   </div>
-
-</section>
-
-<!-- faq section ends -->
+<!-- end  -->
 
 <!-- footer section starts  -->
 
@@ -476,14 +377,14 @@ if(isset($_POST['order'])){
       <div class="box">
          <i class="fas fa-phone"></i>
          <h3>phone number</h3>
-         <p>+123-456-7890</p>
-         <p>+111-222-3333</p>
+         <p>+62-456-7890</p>
+         <p>+62-222-3333</p>
       </div>
 
       <div class="box">
          <i class="fas fa-map-marker-alt"></i>
          <h3>our address</h3>
-         <p>mumbai, india - 400104</p>
+         <p>Surabaya, Indonesia - 400104</p>
       </div>
 
       <div class="box">
@@ -495,14 +396,14 @@ if(isset($_POST['order'])){
       <div class="box">
          <i class="fas fa-envelope"></i>
          <h3>email address</h3>
-         <p>shaikhanas@gmail.com</p>
-         <p>anasbhai@gmail.com</p>
+         <p>dsaraya@gmail.com</p>
+         <p>dsaraya@gmail.com</p>
       </div>
 
    </div>
 
    <div class="credit">
-      &copy; copyright @ <?= date('Y'); ?> by <span>mr. web designer</span> | all rights reserved!
+      @ <?= date('Y'); ?> by <span>Dsaraya</span> | all rights reserved!
    </div>
 
 </section>

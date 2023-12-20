@@ -314,7 +314,7 @@ if(isset($_POST['order'])){
       }
       ?>
 
-      <div class="cart-total"> grand total : <span>$<?= $grand_total; ?>/-</span></div>
+      <div class="cart-total"> grand total : <span>Rp<?= $grand_total; ?>/-</span></div>
 
       <a href="#order" class="btn">order now</a>
 
@@ -337,7 +337,7 @@ if(isset($_POST['order'])){
             while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){    
       ?>
       <div class="box">
-         <div class="price">$<?= $fetch_products['price'] ?>/-</div>
+         <div class="price">Rp<?= $fetch_products['price'] ?>/-</div>
          <img src="uploaded_img/<?= $fetch_products['image'] ?>" alt="">
          <div class="name"><?= $fetch_products['name'] ?></div>
          <form action="" method="post">
@@ -371,14 +371,14 @@ if(isset($_POST['order'])){
       <div class="box">
          <i class="fas fa-phone"></i>
          <h3>phone number</h3>
-         <p>+123-456-7890</p>
-         <p>+111-222-3333</p>
+         <p>+62-456-7890</p>
+         <p>+62-222-3333</p>
       </div>
 
       <div class="box">
          <i class="fas fa-map-marker-alt"></i>
          <h3>our address</h3>
-         <p>mumbai, india - 400104</p>
+         <p>Surabaya, Indonesia - 400104</p>
       </div>
 
       <div class="box">
@@ -390,14 +390,14 @@ if(isset($_POST['order'])){
       <div class="box">
          <i class="fas fa-envelope"></i>
          <h3>email address</h3>
-         <p>shaikhanas@gmail.com</p>
-         <p>anasbhai@gmail.com</p>
+         <p>dsaraya@gmail.com</p>
+         <p>dsaraya@gmail.com</p>
       </div>
 
    </div>
 
    <div class="credit">
-      &copy; copyright @ <?= date('Y'); ?> by <span>mr. web designer</span> | all rights reserved!
+      @ <?= date('Y'); ?> by <span>Dsaraya</span> | all rights reserved!
    </div>
 
 </section>
