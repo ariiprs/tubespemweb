@@ -51,13 +51,13 @@ if(isset($_GET['delete_cart_item'])){
    $delete_cart_id = $_GET['delete_cart_item'];
    $delete_cart_item = $conn->prepare("DELETE FROM `cart` WHERE id = ?");
    $delete_cart_item->execute([$delete_cart_id]);
-   header('location:menu.php');
+   header('location:index.php');
 }
 
 if(isset($_GET['logout'])){
    session_unset();
    session_destroy();
-   header('location:menu.php');
+   header('location:index.php');
 }
 
 if(isset($_POST['add_to_cart'])){
@@ -121,6 +121,7 @@ if(isset($_POST['order'])){
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -156,6 +157,7 @@ if(isset($_POST['order'])){
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style2.css" rel="stylesheet">
 </head>
+
 <body>
 
 <?php
@@ -179,10 +181,10 @@ if(isset($_POST['order'])){
 
       <a href="#home" class="logo"><span>D</span>saraya.</a>
 
-      <nav class="navbar">
+        <nav class="navbar">
          <a href="index.php">home</a>
-         <a href="about.php">about</a>
-         <a href="menu.php" style="text-decoration: underline; color: var(--red);">menu</a>
+         <a href="about.php" style="text-decoration: underline; color: var(--red);">about</a>
+         <a href="menu.php">menu</a>
          <a href="order.php">order</a>
          <a href="#faq">faq</a>
       </nav>
@@ -218,7 +220,7 @@ if(isset($_POST['order'])){
             if($select_user->rowCount() > 0){
                while($fetch_user = $select_user->fetch(PDO::FETCH_ASSOC)){
                   echo '<p>welcome ! <span>'.$fetch_user['name'].'</span></p>';
-                  echo '<a href="menu.php?logout" class="btn">logout</a>';
+                  echo '<a href="index.php?logout" class="btn">logout</a>';
                }
             }else{
                echo '<p><span>you are not logged in now!</span></p>';
@@ -283,7 +285,7 @@ if(isset($_POST['order'])){
          <p> name : <span><?= $fetch_orders['name']; ?></span> </p>
          <p> number : <span><?= $fetch_orders['number']; ?></span> </p>
          <p> address : <span><?= $fetch_orders['address']; ?></span> </p>
-         <p> payment method : <span><?= $fetch_orders['method']; ?></span> </p>
+         <p> payment method : <span><? $fetch_orders['method']; ?></span> </p>
          <p> total_orders : <span><?= $fetch_orders['total_products']; ?></span> </p>
          <p> total price : <span>$<?= $fetch_orders['total_price']; ?>/-</span> </p>
          <p> payment status : <span style="color:<?php if($fetch_orders['payment_status'] == 'pending'){ echo 'red'; }else{ echo 'green'; }; ?>"><?= $fetch_orders['payment_status']; ?></span> </p>
@@ -315,7 +317,7 @@ if(isset($_POST['order'])){
               $grand_total += $sub_total; 
       ?>
       <div class="box">
-         <a href="menu.php?delete_cart_item=<?= $fetch_cart['id']; ?>" class="fas fa-times" onclick="return confirm('delete this cart item?');"></a>
+         <a href="index.php?delete_cart_item=<?= $fetch_cart['id']; ?>" class="fas fa-times" onclick="return confirm('delete this cart item?');"></a>
          <img src="uploaded_img/<?= $fetch_cart['image']; ?>" alt="">
          <div class="content">
           <p> <?= $fetch_cart['name']; ?> <span>(<?= $fetch_cart['price']; ?> x <?= $fetch_cart['quantity']; ?>)</span></p>
@@ -341,52 +343,135 @@ if(isset($_POST['order'])){
 
 </div>
 
-   <!-- Page Header Start -->
+
+    <!-- Page Header Start -->
     <div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
         <div class="container text-center pt-5 pb-3">
-            <h1 class="display-4 text-white animated slideInDown mb-3">Our Menu</h1>
+            <h1 class="display-4 text-white animated slideInDown mb-3">About Us</h1>
         </div>
     </div>
     <!-- Page Header End -->
-<!-- menu section starts  -->
-
-<section id="menu" class="menu">
 
 
+    <!-- About Start -->
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="row img-twice position-relative h-100">
+                        <div class="col-6">
+                            <img class="img-fluid rounded" src="images/about-1.jpg" alt="">
+                        </div>
+                        <div class="col-6 align-self-end">
+                            <img class="img-fluid rounded" src="images/about-2.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="h-100">
+                        <p class="text-primary text-uppercase mb-2">// About Us</p>
+                        <h1 class="display-6 mb-4">We Bake Every Item From The Core Of Our Hearts</h1>
+                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                        <div class="row g-2 mb-4">
+                            <div class="col-sm-6">
+                                <i class="fa fa-check text-primary me-2"></i>Quality Products
+                            </div>
+                            <div class="col-sm-6">
+                                <i class="fa fa-check text-primary me-2"></i>Custom Products
+                            </div>
+                            <div class="col-sm-6">
+                                <i class="fa fa-check text-primary me-2"></i>Online Order
+                            </div>
+                            <div class="col-sm-6">
+                                <i class="fa fa-check text-primary me-2"></i>Home Delivery
+                            </div>
+                        </div>
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="menu.php">Available Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
 
-   <div class="box-container">
 
-      <?php
-         $select_products = $conn->prepare("SELECT * FROM `products`");
-         $select_products->execute();
-         if($select_products->rowCount() > 0){
-            while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){    
-      ?>
-      <div class="box">
-         <div class="price">Rp<?= $fetch_products['price'] ?>/-</div>
-         <img src="uploaded_img/<?= $fetch_products['image'] ?>" alt="">
-         <div class="name"><?= $fetch_products['name'] ?></div>
-         <form action="" method="post">
-            <input type="hidden" name="pid" value="<?= $fetch_products['id'] ?>">
-            <input type="hidden" name="name" value="<?= $fetch_products['name'] ?>">
-            <input type="hidden" name="price" value="<?= $fetch_products['price'] ?>">
-            <input type="hidden" name="image" value="<?= $fetch_products['image'] ?>">
-            <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
-            <input type="submit" class="btn" name="add_to_cart" value="add to cart">
-         </form>
-      </div>
-      <?php
-         }
-      }else{
-         echo '<p class="empty">no products added yet!</p>';
-      }
-      ?>
-
-   </div>
-
-</section>
-
-<!-- menu section ends -->
+    <!-- Team Start -->
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <p class="text-primary text-uppercase mb-2">// Our Team</p>
+                <h1 class="display-6 mb-4">We're Super Professional At Our Skills</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item text-center rounded overflow-hidden">
+                        <img class="img-fluid" src="images/team-1.jpg" alt="">
+                        <div class="team-text">
+                            <div class="team-title">
+                                <h5>Full Name</h5>
+                                <span>Designation</span>
+                            </div>
+                            <div class="team-social">
+                                <a class="btn btn-square btn-light rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-light rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-light rounded-circle" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item text-center rounded overflow-hidden">
+                        <img class="img-fluid" src="images/team-2.jpg" alt="">
+                        <div class="team-text">
+                            <div class="team-title">
+                                <h5>Full Name</h5>
+                                <span>Designation</span>
+                            </div>
+                            <div class="team-social">
+                                <a class="btn btn-square btn-light rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-light rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-light rounded-circle" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item text-center rounded overflow-hidden">
+                        <img class="img-fluid" src="images/team-3.jpg" alt="">
+                        <div class="team-text">
+                            <div class="team-title">
+                                <h5>Full Name</h5>
+                                <span>Designation</span>
+                            </div>
+                            <div class="team-social">
+                                <a class="btn btn-square btn-light rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-light rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-light rounded-circle" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="team-item text-center rounded overflow-hidden">
+                        <img class="img-fluid" src="images/team-4.jpg" alt="">
+                        <div class="team-text">
+                            <div class="team-title">
+                                <h5>Full Name</h5>
+                                <span>Designation</span>
+                            </div>
+                            <div class="team-social">
+                                <a class="btn btn-square btn-light rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-light rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-light rounded-circle" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
 
 <!-- footer section starts  -->
 
@@ -428,26 +513,17 @@ if(isset($_POST['order'])){
 
 <!-- footer section ends -->
 
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
-
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 </body>
+
 </html>

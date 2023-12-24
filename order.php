@@ -124,18 +124,38 @@ if(isset($_POST['order'])){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
    <title>Complete Responsive Pizza Shop Website Design</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-   <!-- font awesome cdn link  -->
+    <!-- Favicon -->
+    <!-- <link href="img/favicon.ico" rel="icon"> -->
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style2.css" rel="stylesheet">
 </head>
 <body>
 
@@ -158,13 +178,13 @@ if(isset($_POST['order'])){
 
    <section class="flex">
 
-      <a href="#home" class="logo"><span>D</span>saraya.</a>
+      <a href="#home" class="logo"><span>D</span>saraya. </a>
 
-       <nav class="navbar">
+         <nav class="navbar">
          <a href="index.php">home</a>
-         <a href="#about">about</a>
+         <a href="about.php">about</a>
          <a href="menu.php">menu</a>
-         <a href="order.php">order</a>
+         <a href="order.php" style="text-decoration: underline; color: var(--red);">order</a>
          <a href="#faq">faq</a>
       </nav>
 
@@ -294,6 +314,7 @@ if(isset($_POST['order'])){
             while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
               $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']);
               $grand_total += $sub_total; 
+              $count = ($fetch_cart['quantity'])
       ?>
       <div class="box">
          <a href="menu.php?delete_cart_item=<?= $fetch_cart['id']; ?>" class="fas fa-times" onclick="return confirm('delete this cart item?');"></a>
@@ -316,17 +337,21 @@ if(isset($_POST['order'])){
 
       <div class="cart-total"> grand total : <span>Rp<?= $grand_total; ?>/-</span></div>
 
-      <a href="#order" class="btn">order now</a>
+      <a href="order.php" class="btn">order now</a>
 
    </section>
 
 </div>
-
 <!-- order section starts  -->
+   <!-- Page Header Start -->
+    <div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center pt-5 pb-3">
+            <h1 class="display-4 text-white animated slideInDown mb-3">Order Now</h1>
+        </div>
+    </div>
+    <!-- Page Header End -->
 
 <section class="order" id="order">
-
-   <h1 class="heading">order now</h1>
 
    <form action="" method="post">
 
@@ -346,7 +371,7 @@ if(isset($_POST['order'])){
               echo '<p>'.$fetch_cart['name'].' <span>('.$fetch_cart['price'].' x '.$fetch_cart['quantity'].')</span></p>';
             }
          }else{
-            echo '<p class="empty"><span>your cart is empty!</span></p>';
+            echo '<p class="empty"><span>keranjang anda kosong!</span></p>';
          }
       ?>
 
@@ -383,7 +408,7 @@ if(isset($_POST['order'])){
          </div>
          <div class="inputBox">
             <span>Jumlah Orders :</span>
-            <input type="number" name="pin_code" class="box" required placeholder="e.g. 123456" min="0" max="999999" onkeypress="if(this.value.length == 6) return false;">
+            <input type="number" name="pin_code" class="box" value="<?php echo $count;?>">
          </div>
       </div>
 
@@ -405,7 +430,6 @@ if(isset($_POST['order'])){
          <i class="fas fa-phone"></i>
          <h3>phone number</h3>
          <p>+62-456-7890</p>
-         <p>+62-222-3333</p>
       </div>
 
       <div class="box">
@@ -424,13 +448,12 @@ if(isset($_POST['order'])){
          <i class="fas fa-envelope"></i>
          <h3>email address</h3>
          <p>dsaraya@gmail.com</p>
-         <p>dsaraya@gmail.com</p>
       </div>
 
    </div>
 
    <div class="credit">
-      @ <?= date('Y'); ?> by <span>Dsaraya</span> | all rights reserved!
+      @ <?= date('Y'); ?> by <span style="color: #e74c3c;;">D</span>saraya. | all rights reserved!
    </div>
 
 </section>

@@ -160,9 +160,9 @@ if(isset($_POST['order'])){
 
       <a href="#home" class="logo"><span>D</span>saraya.</a>
 
-      <nav class="navbar">
-         <a href="index.php">home</a>
-         <a href="#about">about</a>
+        <nav class="navbar">
+         <a href="index.php" style="text-decoration: underline; color: var(--red);">home</a>
+         <a href="about.php">about</a>
          <a href="menu.php">menu</a>
          <a href="order.php">order</a>
          <a href="#faq">faq</a>
@@ -316,7 +316,7 @@ if(isset($_POST['order'])){
 
       <div class="cart-total"> grand total : <span>Rp<?= $grand_total; ?>/-</span></div>
 
-      <a href="#order" class="btn">order now</a>
+      <a href="order.php" class="btn">order now</a>
 
    </section>
 
@@ -330,10 +330,10 @@ if(isset($_POST['order'])){
 
          <div class="slide active">
             <div class="image">
-               <img src="images/home-img-1.png" style="width: 400px; height: 400px; margin-left: 100px; margin-top: 50px;" alt="">
+               <img src="images/home-img-1.png" alt="">
             </div>
             <div class="content">
-               <h3>homemade Croissant</h3>
+               <h3>Florish & Flavor Bakery</h3>
                <div class="fas fa-angle-left" onclick="prev()"></div>
                <div class="fas fa-angle-right" onclick="next()"></div>
             </div>
@@ -344,7 +344,7 @@ if(isset($_POST['order'])){
                <img src="images/home-img-2.png" alt="">
             </div>
             <div class="content">
-               <h3>Pizza With Mushrooms</h3>
+               <h3>Florish & Flavor Bakery</h3>
                <div class="fas fa-angle-left" onclick="prev()"></div>
                <div class="fas fa-angle-right" onclick="next()"></div>
             </div>
@@ -355,7 +355,7 @@ if(isset($_POST['order'])){
                <img src="images/home-img-3.png" alt="">
             </div>
             <div class="content">
-               <h3>Mascarpone And Mushrooms</h3>
+               <h3>Florish & Flavor Bakery</h3>
                <div class="fas fa-angle-left" onclick="prev()"></div>
                <div class="fas fa-angle-right" onclick="next()"></div>
             </div>
@@ -378,7 +378,6 @@ if(isset($_POST['order'])){
          <i class="fas fa-phone"></i>
          <h3>phone number</h3>
          <p>+62-456-7890</p>
-         <p>+62-222-3333</p>
       </div>
 
       <div class="box">
@@ -397,13 +396,12 @@ if(isset($_POST['order'])){
          <i class="fas fa-envelope"></i>
          <h3>email address</h3>
          <p>dsaraya@gmail.com</p>
-         <p>dsaraya@gmail.com</p>
       </div>
 
    </div>
 
    <div class="credit">
-      @ <?= date('Y'); ?> by <span>Dsaraya</span> | all rights reserved!
+      @ <?= date('Y'); ?> by <span style="color: #e74c3c;;">D</span>saraya. | all rights reserved!
    </div>
 
 </section>
