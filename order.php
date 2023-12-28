@@ -97,7 +97,7 @@ if(isset($_POST['order'])){
       $name = filter_var($name, FILTER_SANITIZE_STRING);
       $number = $_POST['number'];
       $number = filter_var($number, FILTER_SANITIZE_STRING);
-      $address = 'flat no.'.$_POST['flat'].', '.$_POST['street'].' - '.$_POST['pin_code'];
+      $address = 'flat no.'.$_POST['flat'].', '.$_POST['street'];
       $address = filter_var($address, FILTER_SANITIZE_STRING);
       $method = $_POST['method'];
       $method = filter_var($method, FILTER_SANITIZE_STRING);
@@ -119,6 +119,20 @@ if(isset($_POST['order'])){
    }
 
 }
+
+// Calculate total quantity in the cart
+$total_cart_qty = 0;
+$select_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+$select_cart->execute([$user_id]);
+if ($select_cart->rowCount() > 0) {
+    while ($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)) {
+        $total_cart_qty += $fetch_cart['quantity'];
+    }
+}
+
+// Set the total quantity in the session
+$_SESSION['cart_qty'] = $total_cart_qty;
+
 
 ?>
 
@@ -162,10 +176,9 @@ if(isset($_POST['order'])){
 
        <nav class="navbar">
          <a href="index.php">home</a>
-         <a href="#about">about</a>
+         <a href="about.php">about</a>
          <a href="menu.php">menu</a>
          <a href="order.php">order</a>
-         <a href="#faq">faq</a>
       </nav>
 
       <div class="icons">
@@ -368,24 +381,24 @@ if(isset($_POST['order'])){
          </div>
          <div class="inputBox">
             <span>payment method</span>
-            <select name="method" class="box">
+            <select name="method" class="box" value="cash on delivery">
                <option value="cash on delivery">cash on delivery</option>
-               <option value="credit card">debit card</option>
             </select>
          </div>
          <div class="inputBox">
-            <span>address line 01 :</span>
-            <input type="text" name="flat" class="box" required placeholder="e.g. flat no." maxlength="50">
+            <span>alamat :</span>
+            <input type="text" name="flat" class="box" required placeholder="e.g. surabaya no." maxlength="50">
          </div>
          <div class="inputBox">
-            <span>address line 02 :</span>
+            <span>lokasi toko :</span>
             <input type="text" name="street" class="box" required placeholder="e.g. street name." maxlength="50">
          </div>
-         <div class="inputBox">
-            <span>Jumlah Orders :</span>
-            <input type="number" name="pin_code" class="box" required placeholder="e.g. 123456" min="0" max="999999" onkeypress="if(this.value.length == 6) return false;">
-         </div>
-      </div>
+        <div class="inputBox">
+    <span>Jumlah Orders :</span>
+    <input type="number" name="pin_code" class="box" required disabled value="<?= isset($_SESSION['cart_qty']) ? $_SESSION['cart_qty'] : 0; ?>">
+</div>
+
+      </div>   
 
       <input type="submit" value="order now" class="btn" name="order">
 
@@ -405,7 +418,6 @@ if(isset($_POST['order'])){
          <i class="fas fa-phone"></i>
          <h3>phone number</h3>
          <p>+62-456-7890</p>
-         <p>+62-222-3333</p>
       </div>
 
       <div class="box">
@@ -423,7 +435,6 @@ if(isset($_POST['order'])){
       <div class="box">
          <i class="fas fa-envelope"></i>
          <h3>email address</h3>
-         <p>dsaraya@gmail.com</p>
          <p>dsaraya@gmail.com</p>
       </div>
 

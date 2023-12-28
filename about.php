@@ -51,13 +51,13 @@ if(isset($_GET['delete_cart_item'])){
    $delete_cart_id = $_GET['delete_cart_item'];
    $delete_cart_item = $conn->prepare("DELETE FROM `cart` WHERE id = ?");
    $delete_cart_item->execute([$delete_cart_id]);
-   header('location:menu.php');
+   header('location:index.php');
 }
 
 if(isset($_GET['logout'])){
    session_unset();
    session_destroy();
-   header('location:menu.php');
+   header('location:index.php');
 }
 
 if(isset($_POST['add_to_cart'])){
@@ -83,7 +83,6 @@ if(isset($_POST['add_to_cart'])){
          $insert_cart->execute([$user_id, $pid, $name, $price, $qty, $image]);
          $message[] = 'added to cart!';
       }
-
    }
 
 }
@@ -162,7 +161,7 @@ if(isset($_POST['order'])){
 
       <nav class="navbar">
          <a href="index.php">home</a>
-         <a href="about.php">about</a>
+         <a href="#about">about</a>
          <a href="menu.php">menu</a>
          <a href="order.php">order</a>
       </nav>
@@ -198,7 +197,7 @@ if(isset($_POST['order'])){
             if($select_user->rowCount() > 0){
                while($fetch_user = $select_user->fetch(PDO::FETCH_ASSOC)){
                   echo '<p>welcome ! <span>'.$fetch_user['name'].'</span></p>';
-                  echo '<a href="menu.php?logout" class="btn">logout</a>';
+                  echo '<a href="index.php?logout" class="btn">logout</a>';
                }
             }else{
                echo '<p><span>you are not logged in now!</span></p>';
@@ -295,7 +294,7 @@ if(isset($_POST['order'])){
               $grand_total += $sub_total; 
       ?>
       <div class="box">
-         <a href="menu.php?delete_cart_item=<?= $fetch_cart['id']; ?>" class="fas fa-times" onclick="return confirm('delete this cart item?');"></a>
+         <a href="index.php?delete_cart_item=<?= $fetch_cart['id']; ?>" class="fas fa-times" onclick="return confirm('delete this cart item?');"></a>
          <img src="uploaded_img/<?= $fetch_cart['image']; ?>" alt="">
          <div class="content">
           <p> <?= $fetch_cart['name']; ?> <span>(<?= $fetch_cart['price']; ?> x <?= $fetch_cart['quantity']; ?>)</span></p>
@@ -321,45 +320,35 @@ if(isset($_POST['order'])){
 
 </div>
 
-<!-- menu section starts  -->
 
-<section id="menu" class="menu">
+<!-- about section starts  -->
 
-   <h1 class="heading">our menu</h1>
+<section class="about" id="about">
+
+   <h1 class="heading">about us</h1>
 
    <div class="box-container">
 
-      <?php
-         $select_products = $conn->prepare("SELECT * FROM `products`");
-         $select_products->execute();
-         if($select_products->rowCount() > 0){
-            while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){    
-      ?>
       <div class="box">
-         <div class="price">Rp<?= $fetch_products['price'] ?>/-</div>
-         <img src="uploaded_img/<?= $fetch_products['image'] ?>" alt="">
-         <div class="name"><?= $fetch_products['name'] ?></div>
-         <form action="" method="post">
-            <input type="hidden" name="pid" value="<?= $fetch_products['id'] ?>">
-            <input type="hidden" name="name" value="<?= $fetch_products['name'] ?>">
-            <input type="hidden" name="price" value="<?= $fetch_products['price'] ?>">
-            <input type="hidden" name="image" value="<?= $fetch_products['image'] ?>">
-            <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
-            <input type="submit" class="btn" name="add_to_cart" value="add to cart">
-         </form>
+         <img src="images/about-1.svg" alt="">
+         <h3>made with love</h3>
+         <p>Dsaraya Bakery is a charming culinary haven, renowned for its exquisite array of freshly baked pastries and artisanal breads that captivate the senses with every bite.quality baking techniques</p>
+         <a href="#menu" class="btn">our menu</a>
       </div>
-      <?php
-         }
-      }else{
-         echo '<p class="empty">no products added yet!</p>';
-      }
-      ?>
+
+      <div class="box">
+         <img src="images/about-3.svg" alt="">
+         <h3>share with freinds</h3>
+         <p>Dsaraya Bakery not only satisfies the cravings of discerning palates but also fosters a warm and inviting atmosphere, making it a cherished destination for those seeking a taste of indulgence.</p>
+         <a href="#menu" class="btn">our menu</a>
+      </div>
 
    </div>
 
 </section>
 
-<!-- menu section ends -->
+<!-- about section ends -->
+
 
 <!-- footer section starts  -->
 

@@ -14,7 +14,7 @@
 <header class="header">
 
    <section class="flex">
-      <a href="admin_page.php" class="logo">D<span>Saraya</span></a>
+      <a href="admin_page.php" class="logo"> <span>D</span>Saraya</a>
 
       <nav class="navbar">
          <a href="admin_page.php">home</a>

@@ -28,6 +28,10 @@ if(isset($_GET['delete'])){
    header('location:admin_orders.php');
 }
 
+// Ambil pesanan dengan pengecualian "completed"
+$select_orders = $conn->prepare("SELECT * FROM `orders` WHERE payment_status != 'completed'");
+$select_orders->execute();
+
 ?>
 
 <!DOCTYPE html>

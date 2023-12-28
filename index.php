@@ -162,10 +162,9 @@ if(isset($_POST['order'])){
 
       <nav class="navbar">
          <a href="index.php">home</a>
-         <a href="#about">about</a>
+         <a href="about.php">about</a>
          <a href="menu.php">menu</a>
          <a href="order.php">order</a>
-         <a href="#faq">faq</a>
       </nav>
 
       <div class="icons">
@@ -316,7 +315,7 @@ if(isset($_POST['order'])){
 
       <div class="cart-total"> grand total : <span>Rp<?= $grand_total; ?>/-</span></div>
 
-      <a href="#order" class="btn">order now</a>
+      <a href="order.php" class="btn">order now</a>
 
    </section>
 
@@ -378,7 +377,6 @@ if(isset($_POST['order'])){
          <i class="fas fa-phone"></i>
          <h3>phone number</h3>
          <p>+62-456-7890</p>
-         <p>+62-222-3333</p>
       </div>
 
       <div class="box">
@@ -396,7 +394,6 @@ if(isset($_POST['order'])){
       <div class="box">
          <i class="fas fa-envelope"></i>
          <h3>email address</h3>
-         <p>dsaraya@gmail.com</p>
          <p>dsaraya@gmail.com</p>
       </div>
 
